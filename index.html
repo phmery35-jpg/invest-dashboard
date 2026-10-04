@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Investissement — BTC</title>
+<style>
+:root{
+  --bg:#f3f5f7;--card:#fff;--text:#16232b;--muted:#71808a;--line:#dfe5e8;
+  --navy:#173847;--petrol:#24566a;--soft:#edf3f5;--orange:#b86b24;--green:#26734d;--red:#a64444;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+header{background:var(--navy);color:white;padding:22px 30px}
+header .wrap{max-width:1380px;margin:auto;display:flex;align-items:end;justify-content:space-between;gap:20px}
+h1{font-size:24px;margin:0 0 4px}.subtitle{opacity:.7;font-size:13px}
+main{max-width:1380px;margin:22px auto;padding:0 20px 40px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;box-shadow:0 2px 8px rgba(20,40,50,.035)}
+.metric .label,.smalllabel{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.metric .value{font-size:23px;font-weight:700;margin-top:7px}.metric .sub{font-size:12px;color:var(--muted);margin-top:4px}
+.section-title{font-size:14px;margin:0 0 12px;font-weight:750}
+.chart-card{margin:12px auto 0;padding:0;overflow:hidden;max-width:1120px}.chart-head{padding:15px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.tv{height:480px;width:100%}
+.two{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;margin-top:12px}
+.signals{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.signal{background:var(--soft);padding:12px;border-radius:9px}
+.signal b{display:block;margin-top:5px}.neutral{color:var(--orange)}.positive{color:var(--green)}.negative{color:var(--red)}
+.scenario{font-size:25px;font-weight:800;margin:7px 0 8px}.reason{font-size:14px;line-height:1.5;color:#42515a}
+.plan{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:10px}
+.field{background:#f8fafb;border:1px solid var(--line);border-radius:8px;padding:10px}
+.field input{width:100%;border:0;background:transparent;font-size:15px;font-weight:650;color:var(--text);outline:none;margin-top:4px}
+.rules{margin-top:12px;background:var(--navy);color:#fff;display:flex;gap:10px;justify-content:space-around;flex-wrap:wrap}
+.rule{font-size:13px;font-weight:650;padding:4px 8px}
+.journal{margin-top:12px}table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:11px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-size:11px;text-transform:uppercase}
+details{margin-top:12px}summary{cursor:pointer;font-weight:750}.lexique{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}.term{padding:10px;background:#f7f9fa;border-radius:8px;font-size:13px}.term b{display:block;margin-bottom:3px;color:var(--petrol)}
+.note{font-size:11px;color:var(--muted);margin-top:10px;line-height:1.45}
+button{border:1px solid var(--line);background:white;border-radius:7px;padding:7px 10px;cursor:pointer;color:var(--text)}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.signals{grid-template-columns:repeat(2,1fr)}.plan{grid-template-columns:repeat(2,1fr)}.lexique{grid-template-columns:1fr}.tv{height:420px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div><h1>TABLEAU DE DÉCISION — BTC</h1><div class="subtitle">Observer → comprendre → décider. Pas de FOMO.</div></div><div style="font-size:12px;opacity:.65">V1 pédagogique</div></div></header>
+<main>
+<section class="grid">
+ <div class="card metric"><div class="label">Capital initial</div><div class="value">50,00 €</div><div class="sub">Laboratoire d'apprentissage</div></div>
+ <div class="card metric"><div class="label">Position BTC</div><div class="value">5,00 €</div><div class="sub">0,00006496 BTC</div></div>
+ <div class="card metric"><div class="label">Cash disponible</div><div class="value">45,00 €</div><div class="sub">Non engagé</div></div>
+ <div class="card metric"><div class="label">PRU BTC</div><div class="value">76 970 €</div><div class="sub">Prix moyen d'achat</div></div>
+</section>
+
+<section class="card chart-card">
+ <div class="chart-head"><div><div class="smalllabel">Marché</div><div class="section-title" style="margin:3px 0 0">BTC / EUR — graphique interactif</div></div><span style="font-size:12px;color:var(--muted)">TradingView</span></div>
+ <div class="tv">
+  <div class="tradingview-widget-container" style="height:100%;width:100%">
+   <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+   <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+   {
+     "autosize": true,
+     "symbol": "COINBASE:BTCEUR",
+     "interval": "120",
+     "timezone": "Europe/Paris",
+     "theme": "light",
+     "style": "1",
+     "locale": "fr",
+     "withdateranges": true,
+     "hide_side_toolbar": false,
+     "hide_top_toolbar": false,
+     "hide_legend": false,
+     "hide_volume": false,
+     "allow_symbol_change": true,
+     "save_image": false,
+     "calendar": false,
+     "support_host": "https://www.tradingview.com"
+   }
+   </script>
+  </div>
+ </div>
+</section>
+
+<section class="two">
+ <div class="card">
+  <h2 class="section-title">Signaux suivis</h2>
+  <div class="signals">
+   <div class="signal"><span class="smalllabel">Technique</span><b class="neutral">Neutre</b></div>
+   <div class="signal"><span class="smalllabel">Volume</span><b>À observer</b></div>
+   <div class="signal"><span class="smalllabel">Flux ETF</span><b>À actualiser</b></div>
+   <div class="signal"><span class="smalllabel">Contexte</span><b>À actualiser</b></div>
+  </div>
+  <div style="margin-top:16px">
+   <span class="smalllabel">Zones de travail</span>
+   <div class="plan">
+    <div class="field"><span class="smalllabel">Support bas</span><input value="72 000 €"></div>
+    <div class="field"><span class="smalllabel">Support haut</span><input value="74 000 €"></div>
+    <div class="field"><span class="smalllabel">Résistance bas</span><input value="76 000 €"></div>
+    <div class="field"><span class="smalllabel">Résistance haut</span><input value="78 000 €"></div>
+    <div class="field"><span class="smalllabel">Unité observée</span><input value="2 h"></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="card">
+  <span class="smalllabel">Scénario actuel</span>
+  <div class="scenario neutral">ATTENTE</div>
+  <div class="reason">Consolidation / plateau. Pas de tendance haussière franche à court terme. On attend soit une cassure crédible de la résistance, soit la formation confirmée d'un nouveau support après une baisse.</div>
+  <div style="margin-top:16px"><span class="smalllabel">Décision</span><div style="font-weight:750;margin-top:5px">Conserver les 5 € de BTC — ne pas engager les 45 € pour l'instant.</div></div>
+ </div>
+</section>
+
+<section class="card" style="margin-top:12px">
+ <h2 class="section-title">Plan si une opportunité apparaît</h2>
+ <div class="plan">
+  <div class="field"><span class="smalllabel">Entrée</span><input placeholder="— €"></div>
+  <div class="field"><span class="smalllabel">Stop-loss</span><input placeholder="— €"></div>
+  <div class="field"><span class="smalllabel">Objectif</span><input placeholder="— €"></div>
+  <div class="field"><span class="smalllabel">Montant</span><input placeholder="— €"></div>
+  <div class="field"><span class="smalllabel">Risque / rendement</span><input placeholder="— : 1"></div>
+ </div>
+ <div class="note">Les champs sont volontairement laissés vides : on ne fabrique pas un plan d'achat tant que le marché ne nous donne pas de scénario clair.</div>
+</section>
+
+<section class="card rules">
+ <span class="rule">PAS DE FOMO</span><span class="rule">PAS D'ACHAT PENDANT LA CHUTE</span><span class="rule">ATTENDRE LA CONFIRMATION</span><span class="rule">DÉFINIR LE RISQUE AVANT D'ACHETER</span><span class="rule">PAS DE LEVIER</span>
+</section>
+
+<section class="card journal">
+ <h2 class="section-title">Journal des décisions</h2>
+ <table>
+  <thead><tr><th>Date</th><th>Actif</th><th>Observation</th><th>Décision</th><th>Pourquoi</th></tr></thead>
+  <tbody><tr><td>04/10/2026</td><td>BTC/EUR</td><td>Plateau ~72–78 k€</td><td><b>Attente</b></td><td>Pas de cassure confirmée ; éviter d'acheter au milieu du plateau.</td></tr></tbody>
+ </table>
+</section>
+
+<section class="card">
+ <details>
+  <summary>Lexique — les termes déjà vus</summary>
+  <div class="lexique">
+   <div class="term"><b>PRU</b>Prix moyen auquel on a acheté la valeur.</div>
+   <div class="term"><b>Ordre au marché</b>Achat/vente immédiat au meilleur prix disponible.</div>
+   <div class="term"><b>Ordre limite</b>Prix maximum d'achat ou minimum de vente fixé à l'avance.</div>
+   <div class="term"><b>Stop-loss</b>« Stoppe la casse » si notre scénario est invalidé.</div>
+   <div class="term"><b>Take-profit</b>Niveau prévu pour prendre son bénéfice.</div>
+   <div class="term"><b>Support</b>Zone où le prix tend à arrêter de baisser.</div>
+   <div class="term"><b>Résistance</b>Zone où le prix tend à buter à la hausse.</div>
+   <div class="term"><b>Breakout / cassure</b>Franchissement crédible d'une zone de résistance ou support.</div>
+   <div class="term"><b>Volume</b>Quantité échangée pendant une période.</div>
+   <div class="term"><b>Tendance</b>Direction dominante : hausse, baisse ou latérale.</div>
+   <div class="term"><b>Consolidation / plateau</b>Prix qui évolue dans une zone sans tendance nette.</div>
+   <div class="term"><b>Flux ETF</b>Capitaux qui entrent ou sortent des ETF suivis.</div>
+   <div class="term"><b>Volatilité</b>Amplitude et rapidité des variations de prix.</div>
+   <div class="term"><b>Levier</b>Exposition supérieure au capital engagé ; amplifie gains et pertes.</div>
+   <div class="term"><b>Liquidation</b>Fermeture forcée d'une position à levier devenue trop déficitaire.</div>
+   <div class="term"><b>Short squeeze</b>Hausse amplifiée par des vendeurs à découvert forcés de racheter.</div>
+   <div class="term"><b>Whale</b>Détenteur d'une très grande quantité d'un actif.</div>
+   <div class="term"><b>FOMO</b>Acheter par peur de rater une hausse.</div>
+   <div class="term"><b>Analyse technique</b>Lecture du prix, des volumes et de la structure du marché.</div>
+   <div class="term"><b>Analyse fondamentale</b>Étude des facteurs économiques, financiers et contextuels.</div>
+   <div class="term"><b>Risque / rendement</b>Gain potentiel comparé à la perte acceptée.</div>
+  </div>
+ </details>
+ <div class="note">Outil pédagogique personnel. Les niveaux et scénarios sont des hypothèses de travail, pas des recommandations financières.</div>
+</section>
+
+<section class="card" style="margin-top:12px">
+  <h2 class="section-title">Supports possibles pour le swing trading</h2>
+  <table>
+    <thead>
+      <tr><th>Support</th><th>Exemple</th><th>Intérêt swing</th><th>Pour nous</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><b>Actions</b></td><td>Nvidia, Apple, LVMH…</td><td>★★★★☆</td><td>Excellent pour apprendre</td></tr>
+      <tr><td><b>ETF sectoriels / thématiques</b></td><td>Semi-conducteurs, banques, énergie…</td><td>★★★☆☆</td><td>Intéressant, moins nerveux qu’une action</td></tr>
+      <tr><td><b>ETF indiciels</b></td><td>Nasdaq 100, S&amp;P 500…</td><td>★★☆☆☆</td><td>Possible, plutôt moyen / long terme</td></tr>
+      <tr><td><b>Crypto majeures</b></td><td>BTC, ETH</td><td>★★★★★</td><td>Très adaptée aux mouvements courts, mais volatile</td></tr>
+      <tr><td><b>Petites cryptos</b></td><td>Altcoins</td><td>★★★★★</td><td>Beaucoup plus spéculatif — pas pour commencer</td></tr>
+      <tr><td><b>Matières premières</b></td><td>Or, pétrole… via ETC / ETF</td><td>★★★☆☆</td><td>Intéressant pour apprendre les effets macro</td></tr>
+      <tr><td><b>Devises / Forex</b></td><td>EUR/USD…</td><td>★★★☆☆</td><td>Vrai marché de swing, souvent associé au levier — plus tard</td></tr>
+      <tr><td><b>Obligations / ETF obligataires</b></td><td>Dette États / entreprises</td><td>★☆☆☆☆</td><td>Peu intéressant pour notre apprentissage actuel</td></tr>
+      <tr><td><b>Produits dérivés</b></td><td>Options, futures, CFD</td><td>★★★★★</td><td>Puissants mais complexes / levier — on laisse de côté</td></tr>
+    </tbody>
+  </table>
+  <div class="note"><b>À retenir :</b> le support et le thème ne sont pas la même chose. Une même hypothèse économique peut être jouée avec des supports différents et donc des niveaux de risque différents.</div>
+</section>
+
+</main>
+</body>
+</html>
